@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'enum.dart';
 import 'results_page.dart';
+import 'constants.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -28,21 +29,21 @@ class _InputPageState extends State<InputPage> {
 
   String getResult() {
     if (_bmi >= 25) {
-      return 'Overweight';
+      return "Overweight";
     } else if (_bmi > 18.5) {
-      return 'Normal';
+      return "Normal";
     } else {
-      return 'Underweight';
+      return "Underweight";
     }
   }
 
   String getInterpretation() {
     if (_bmi >= 25) {
-      return 'You have a higher than normal body weight. Try to exercise more.';
+      return "You have a higher than normal body weight. Try to exercise more.";
     } else if (_bmi >= 18.5) {
-      return 'You have a normal body weight. Good job!';
+      return "You have a normal body weight. Good job!";
     } else {
-      return 'You have a lower than normal body weight. You can eat a bit more.';
+      return "You have a lower than normal body weight. You can eat a bit more.";
     }
   }
 
@@ -50,13 +51,11 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFFCEE9B6),
+          backgroundColor: backgroundColor,
           title: Text(
             "BMI CALCULATOR",
             style: TextStyle(
-                color: Color(0xFF145A22),
-                fontSize: 26,
-                fontWeight: FontWeight.w600),
+                color: primaryColor, fontSize: 26, fontWeight: FontWeight.w600),
           ),
           centerTitle: true,
         ),
@@ -77,7 +76,7 @@ class _InputPageState extends State<InputPage> {
                         children: [
                           Icon(
                             FontAwesomeIcons.mars,
-                            color: Color(0xFFFFFEDC),
+                            color: iconColor,
                             size: 94,
                           ),
                           SizedBox(
@@ -86,8 +85,7 @@ class _InputPageState extends State<InputPage> {
                           Text(
                             "MALE",
                             style: TextStyle(
-                                color: Color(0xFFFFFEDC),
-                                fontWeight: FontWeight.w700),
+                                color: iconColor, fontWeight: FontWeight.w700),
                           )
                         ],
                       ),
@@ -95,8 +93,8 @@ class _InputPageState extends State<InputPage> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: selectedCard == Gender.male
-                              ? Color(0xFFA7A46C)
-                              : Color(0xFF2D8D79)),
+                              ? selectedColor
+                              : unselectedColor),
                     ),
                   ),
                 ),
@@ -113,7 +111,7 @@ class _InputPageState extends State<InputPage> {
                         children: [
                           Icon(
                             FontAwesomeIcons.venus,
-                            color: Color(0xFFFFFEDC),
+                            color: iconColor,
                             size: 94,
                           ),
                           SizedBox(
@@ -122,8 +120,7 @@ class _InputPageState extends State<InputPage> {
                           Text(
                             "FEMALE",
                             style: TextStyle(
-                                color: Color(0xFFFFFEDC),
-                                fontWeight: FontWeight.w700),
+                                color: iconColor, fontWeight: FontWeight.w700),
                           )
                         ],
                       ),
@@ -131,8 +128,8 @@ class _InputPageState extends State<InputPage> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: selectedCard == Gender.female
-                              ? Color(0xFFA7A46C)
-                              : Color(0xFF2D8D79)),
+                              ? selectedColor
+                              : unselectedColor),
                     ),
                   ),
                 )
@@ -150,7 +147,7 @@ class _InputPageState extends State<InputPage> {
                         Text(
                           "HEIGHT",
                           style: TextStyle(
-                              color: Color(0xFFFFFEDC),
+                              color: iconColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 20),
                         ),
@@ -162,14 +159,13 @@ class _InputPageState extends State<InputPage> {
                             Text(
                               height.toString(),
                               style: TextStyle(
-                                  color: Color(0xFFFFFEDC),
+                                  color: iconColor,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 65),
                             ),
                             Text(
                               "cm",
-                              style: TextStyle(
-                                  color: Color(0xFFFFFEDC), fontSize: 21),
+                              style: TextStyle(color: iconColor, fontSize: 21),
                             ),
                           ],
                         ),
@@ -183,14 +179,14 @@ class _InputPageState extends State<InputPage> {
                             });
                           },
                           inactiveColor: Colors.white,
-                          activeColor: Color(0xFFA7A46C),
+                          activeColor: selectedColor,
                         )
                       ],
                     ),
                     margin: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Color(0xFF2D8D79)),
+                        color: unselectedColor),
                   ),
                 ),
               ],
@@ -208,13 +204,13 @@ class _InputPageState extends State<InputPage> {
                         Text(
                           "WEIGHT",
                           style: TextStyle(
-                              color: Color(0xFFFFFEDC),
+                              color: iconColor,
                               fontWeight: FontWeight.w700,
                               fontSize: 24),
                         ),
                         Text(weight.toString(),
                             style: TextStyle(
-                                color: Color(0xFFFFFEDC),
+                                color: iconColor,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 55)),
                         Row(
@@ -227,7 +223,7 @@ class _InputPageState extends State<InputPage> {
                                 });
                               },
                               child: CircleAvatar(
-                                backgroundColor: Color(0xFFFFFEDC),
+                                backgroundColor: iconColor,
                                 radius: 30,
                                 child: Icon(
                                   FontAwesomeIcons.minus,
@@ -242,7 +238,7 @@ class _InputPageState extends State<InputPage> {
                                 });
                               },
                               child: CircleAvatar(
-                                backgroundColor: Color(0xFFFFFEDC),
+                                backgroundColor: iconColor,
                                 radius: 30,
                                 child: Icon(
                                   FontAwesomeIcons.plus,
@@ -257,7 +253,7 @@ class _InputPageState extends State<InputPage> {
                     margin: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Color(0xFF2D8D79)),
+                        color: unselectedColor),
                   ),
                 ),
                 Expanded(
@@ -268,13 +264,13 @@ class _InputPageState extends State<InputPage> {
                         Text(
                           "AGE",
                           style: TextStyle(
-                              color: Color(0xFFFFFEDC),
+                              color: iconColor,
                               fontWeight: FontWeight.w700,
                               fontSize: 24),
                         ),
                         Text(age.toString(),
                             style: TextStyle(
-                                color: Color(0xFFFFFEDC),
+                                color: iconColor,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 55)),
                         Row(
@@ -287,7 +283,7 @@ class _InputPageState extends State<InputPage> {
                                 });
                               },
                               child: CircleAvatar(
-                                backgroundColor: Color(0xFFFFFEDC),
+                                backgroundColor: iconColor,
                                 radius: 30,
                                 child: Icon(
                                   FontAwesomeIcons.minus,
@@ -302,7 +298,7 @@ class _InputPageState extends State<InputPage> {
                                 });
                               },
                               child: CircleAvatar(
-                                backgroundColor: Color(0xFFFFFEDC),
+                                backgroundColor: iconColor,
                                 radius: 30,
                                 child: Icon(
                                   FontAwesomeIcons.plus,
@@ -317,7 +313,7 @@ class _InputPageState extends State<InputPage> {
                     margin: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Color(0xFF2D8D79)),
+                        color: unselectedColor),
                   ),
                 ),
               ],
